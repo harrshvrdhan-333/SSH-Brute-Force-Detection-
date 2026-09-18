@@ -40,7 +40,7 @@ Kali Linux was used to generate the authentication attempts.
 
 Splunk Enterprise was used to search and investigate the Linux authentication events.
 
-![Ubuntu SSH Setup](./images/01_setup.png)
+![Ubuntu SSH Setup](./screenshots/01_setup.png)
 
 **Verdict:** The Ubuntu server was ready to generate SSH authentication telemetry for the investigation.
 
@@ -50,7 +50,7 @@ Repeated SSH authentication attempts were generated from Kali Linux against the 
 
 This created the failed authentication activity needed for the investigation.
 
-![SSH Attack Simulation](./images/02_attack.png)
+![SSH Attack Simulation](./screenshots/02_attack.png)
 
 **Verdict:** Repeated SSH authentication attempts were generated against the Ubuntu server in the controlled lab.
 
@@ -70,7 +70,7 @@ I first confirmed that the authentication events were reaching Splunk.
 index=main
 ~~~
 
-![Splunk Log Ingestion](./images/03_ingestion.png)
+![Splunk Log Ingestion](./screenshots/03_ingestion.png)
 
 This validation mattered because detection logic is only useful when the underlying telemetry is available and searchable.
 
@@ -98,7 +98,7 @@ index=main "Failed password"
 
 The threshold then keeps sources responsible for more than three failed authentication attempts.
 
-![SSH Brute Force Detection](./images/04_detection.png)
+![SSH Brute Force Detection](./screenshots/04_detection.png)
 
 **Verdict:** Splunk identified a source responsible for repeated failed SSH authentication attempts.
 
@@ -119,7 +119,7 @@ index=main sourcetype=linux_secure ("Failed password" OR "Accepted password")
 | stats count by src_ip auth_result
 ~~~
 
-![SSH Investigation](./images/05_investigation.png)
+![SSH Investigation](./screenshots/05_investigation.png)
 
 The investigation found repeated failed authentication attempts from the source.
 
@@ -165,9 +165,7 @@ After completing the investigation, I documented the findings in a short SOC inc
 
 The report records the activity, evidence, investigation findings, impact, and recommended response.
 
-[View the full incident report](./ssh_brute_force_incident_report.pdf)
-
-![SSH Brute Force Incident Report](./images/06_incident_report.jpg)
+![SSH Brute Force Incident Report](./screenshots/06_incident_report.jpg)
 
 **Verdict:** The technical investigation was documented in a report that another analyst or security team could review.
 
