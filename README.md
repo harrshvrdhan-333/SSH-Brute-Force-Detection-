@@ -2,7 +2,7 @@
 
 Detecting SSH brute force activity in Splunk using Linux authentication logs and investigating whether a successful login followed.
 
-![SSH Brute Force Detection Architecture](./images/00_architecture.png)
+![SSH Brute Force Detection Architecture](./screenshots/00_architecture.png)
 
 The lab follows the activity from Kali Linux to the Ubuntu SSH server. Authentication logs are then sent to Splunk for detection and investigation.
 
